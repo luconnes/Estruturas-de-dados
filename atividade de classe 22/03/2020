@@ -1,0 +1,81 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define TRUE 1
+#define FALSE 0
+#include <stdio.h> 
+#include <stdlib.h> 
+typedef struct noQueue {//Informação e endereço do próximo 
+	int info;
+	struct noQueue* prox;
+}TNoQueue;
+typedef struct queue {
+	TNoQueue* inicio, * fim;//Posição inicial e final 				
+}Queue;
+void inicializar(Queue* fila) {
+	fila->inicio == NULL;
+	fila->fim == NULL;
+}
+int isFull(Queue fila) {//verifica se a fila ta cheia ou vazia
+	return 0;
+}
+int isEmpty(Queue* fila) {//verifica se esta vazia
+	if (fila->inicio == NULL && fila->fim == NULL) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+void enQueue(Queue*fila,int valor) {//coloca um valor na fila 
+	TNoQueue* novo;
+	TNoQueue* aux;
+	novo = (TNoQueue*)malloc(sizeof(	TNoQueue));
+	novo->info = valor;
+	novo->prox = NULL;
+	if (isEmpty(fila) == 1) {//verificar o pq não é ultilizado o "*" antes de declarar fila 
+		fila->inicio = novo;
+		fila->fim = novo;
+	}
+	else {
+		fila->fim->prox = novo;
+		fila->fim = novo;
+	}
+}
+int deQueue(Queue*fila) {//retira um valor da fila 
+	int valor;
+	TNoQueue* aux;
+	valor = fila->inicio->info;
+	aux = fila->inicio;
+	fila->inicio = fila->inicio->prox;
+	free(aux);
+	if (fila->inicio == NULL) {
+		fila->fim = NULL;
+	}
+	return valor;
+}
+int head(Queue fila) {
+	return fila.inicio->info;
+}
+void imprimirFila(Queue* fila) {
+	TNoQueue* aux;
+	aux = fila->inicio;
+	while (aux != fila->fim) {
+		printf("valor: %d \n", aux->info);
+		aux->prox;
+	}
+}
+
+
+
+
+int main() {
+
+
+
+
+
+
+
+
+	printf("Hello, World!");
+	return 0;
+}
