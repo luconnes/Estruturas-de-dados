@@ -1,0 +1,45 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct no{
+    char letra;
+    struct no *prox;
+}No;
+typedef No *Pilha;
+int isEmpty(Pilha pilha){
+    return(pilha==NULL);
+}
+void iniciar(Pilha pilha){
+    pilha=NULL;
+}
+void adicionar(Pilha *pilha,char info){
+    No *novo=(No*)malloc(sizeof(No));
+    novo->letra=info;
+    if(isEmpty(*pilha)){
+        novo->prox==NULL;
+    }
+    else{
+        novo->prox=*pilha;    
+    }
+}
+int remover(Pilha pilha){
+    char letraR=pilha->letra;
+    No *aux=pilha->prox;
+    if(pilha->prox==NULL){
+        pilha=NULL;
+    }
+    else{
+        pilha->prox=aux;
+    }
+    free(aux);
+    return letraR;
+}
+char head(Pilha pilha){
+    return(pilha->letra);
+}
+
+int main()
+{
+    
+
+    return 0;
+}
